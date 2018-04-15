@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib uri="/struts-tags" prefix="s" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,10 +8,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE html>
 <html>
- <head>
+  <head>
     <base href="<%=basePath%>">
     
-    <title>植物检索</title>
+    <title>江华县药市药用植物资源数据库</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			<div class="header-title">
   				<h2>江华县药市</h2>
   				<h1>药用植物资源数据库</h1>
-  				
+  			
   			</div>
   			
   		   <!-- 1.结束 -->     
@@ -82,11 +82,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			<div class=" contain2 col-xs-12">	
 	  			<div class="menu">  
 			   		<ul>  					
-			  			<li><a href="plant/plant_showPlant">主页</a></li>
-			  			<li  class="active"><a href="plant/plant_showPlant1">植物检索</a></li>
+			  			<li class="active"><a href="plant/plant_showPlant">主页</a></li>
+			  			<li><a href="plant/plant_showPlant1">植物检索</a></li>
 			  			<li><a href="plant/plant_showPlant2">数据编辑</a></li>
-			  			<li><a href="#">相关信息</a></li>
-			  			<li><a href="#">联系我们</a></li>			
+			  			<li><a href="otherinfo.jsp">相关信息</a></li>
+			  			<li><a href="aboutus.jsp">联系我们</a></li>			
 			  		</ul>
 	  			</div>	
   		   </div>
@@ -94,97 +94,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	</div>
   	</div>
   	<!-- 页面顶部结束 -->
-  	
-  	<div class="query-contain">
-  	<main class="container-fluid">
-      <div class="row">
-         <div class="col-md-12">
-		   
-		      <div class="panel panel-info1">
-	                 <div class="panel-heading1">
-	                    <h3 class="panel-title">植物检索</h3>
-	                 </div>
-	                 <s:form action="plant/plant_showPlant1" method="post">
-	                 <div class="panel-body panel-body-table" >
-	                      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-	                         <thead>
-	                           <tr>
-	                              	  <th>序号</th>  
-							          <th>学名</th>
-							          <th>俗名</th>
-							          <th>科</th> 
-							          <th>属</th> 
-							          
-							          <th>图片</th> 
-							          
-	                              </tr>
-	                          </thead>
-	                          <tbody>
-	                              <s:iterator value="plantslist" var="plant" status="status">
-	                                  <tr>
-	                                      <td><s:property value="#status.index+1"></s:property></td>
-	                                      <td><s:property value="#plant.scchname"></s:property>
-	                                      <br/><a style="font-style:italic;"><s:property value="#plant.scname"></s:property></a></td>
-	                                      <td><s:property value="#plant.chloname"></s:property>
-	                                      <br/><s:property value="#plant.loname"></s:property></td>
-	                                      <td><s:property value="#plant.chfaname"></s:property>
-	                                       <br/><s:property value="#plant.faname"></s:property></td>
-	                                      <td><s:property value="#plant.chgenara"></s:property>
-	                                       <br/><s:property value="#plant.genera"></s:property></td>
-	                                       
-	                                      <td><img src = "<%=basePath %><s:property value='filepath'/>" style="width:100px;height:100px"></td>
-	                                      
-	                                  </tr>
-	                              </s:iterator>
-	                          </tbody>
-	                        </table>
-	                   </div>
-	                   </s:form>
-	            </div>
-	               
-		       
-	       </div>
-	   </div>
-	</main>
-	
-	<script src="<%=basePath%>js/jquery.min.js"></script>
-    <script src="<%=basePath%>js/bootstrap.min.js"></script>
-    <script src="<%=basePath%>js/jquery.dataTables.js"></script>
-    <script src="<%=basePath%>js/dataTables.bootstrap.js"></script>
-    <script>
-       $(document).ready(function () {
-           $('#dataTables-example').dataTable({
-			   "language": {
-                 "lengthMenu": "每页 _MENU_ 条记录",
-                 "zeroRecords": "没有找到记录",
-                 "info": "第 _PAGE_ 页 ( 共 _PAGES_ 页 )",
-                 "infoEmpty": "无记录",
-                 "infoFiltered": "(从 _MAX_ 条记录过滤)",
-				 "sInfoPostFix": "",
-				 "sSearch": "搜 索 : ",
-				 "sUrl": "",
-				 "sEmptyTable": "表中数据为空",
-				 "sLoadingRecords": "载入中...",
-				 "sInfoThousands": ",",
-				 "oPaginate": {
-					"sFirst": "首页",
-					"sPrevious": "上页",
-					"sNext": "下页",
-					"sLast": "末页"
-				 },
-				 "oAria": {
-				 "sSortAscending": ": 以升序排列此列",
-				 "sSortDescending": ": 以降序排列此列"
-			     },
-				 
-             }
-		   });
-       });
-    </script>
-  	</div>
-  	
-  	
-   <!--  友情链接和脚本 -->
+   
+   <!-- 首页图文 -->
+   
+   <div class="contain5">
+   		<div class="show-title">
+   				<h3>植物展示</h3>
+   				<a href="plant/plant_showPlant1" class="more">查看更多</a>
+   		</div>
+   		<s:form action="plant/plant_showPlant" method="post">
+   			<ul class="show-list">
+   				<s:iterator value="plantslist" status="status" >
+   					<li class="show-item">
+   						<a href="#" class="show-pic">
+   						<img src = "<%=basePath %><s:property value='filepath'/>" style="width:100%;height:225px">
+						</a>
+   						<div class="show-info">
+	   						<a href="#" class="show-name" style="font-style:italic;"><s:property value ="scname"/></a>
+	   						<p class="show-name-p"><s:property value ="loname"/></p>
+   						</div>
+   					</li>
+   				</s:iterator>
+   			</ul>
+   		</s:form>
+   		</div>
+   		
+   		<!--  友情链接和脚本 -->
    		<footer class="footer">
    			<div class=" footer-contain">
    				<div class="footer-link">
@@ -223,7 +158,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    				</div>
    			</div>
    			</footer>
-   
-
-  	</body>
+   		  
+  </body>
 </html>

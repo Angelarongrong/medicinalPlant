@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+     
+     <constant name="struts.i18n.encoding" value="utf-8"/>
+     <constant name="struts.devMode" value="false" />
+     <!--Struts2中Action对象的创建交给spring完成-->
+     <constant name="struts.objectFactory" value="spring" />   
+     
+        
+      <package name = "default" extends="struts-default">    
+      	
+      	<global-results>
+      		<result name="login" type="redirect">/login.jsp</result>
+      		<result name="success" type="redirect">${prePage}</result>
+      		
+      	</global-results>
+      </package> 
+    
+     <package name="plant" namespace="/plant" extends="default">	 
+	        <action name="plant_*" class="plantAction" method="{1}">
+	        	<result name="show_view">/main.jsp</result>
+	        	<result name="show_view1">/query.jsp</result>
+	        	<result name="show_view2">/edit.jsp</result>
+	        	<result name="message">/addsuccess.jsp</result><!-- 成功添加的跳转页 -->
+	        	<result name="detail_view">/detail.jsp</result><!-- 详情页 -->
+	        	<result name="edit_view">/editdetail.jsp</result><!-- 修改信息页面 -->
+	        	<result name="delete_message">/deletesuc.jsp</result><!-- 成功删除的跳转页 -->
+	        	<result name="edit_message">/editsuc.jsp</result><!-- 成功修改的跳转页 -->
+	        		          
+	        </action>  
+	 </package>
+	
+     
+
+</struts>
+
+
+        
+	 
+
