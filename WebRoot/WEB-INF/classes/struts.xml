@@ -10,18 +10,30 @@
      <!--Struts2中Action对象的创建交给spring完成-->
      <constant name="struts.objectFactory" value="spring" />   
      
-        
-      <package name = "default" extends="struts-default">    
+          <package name = "default" extends="struts-default">
+      	<interceptors>
+      		<interceptor name = "LoginInterceptors" class = "com.plant.util.LoginInterceptors">
+      			<param name="excludeName">admin_login,admin_reg,plant_show_view,plant_showPlant,plant_queryPlant,plant_showPlant1</param>
+      			<param name="sessionName">admin</param>
+      		</interceptor>
+      		
+      		<interceptor-stack name = "myInterceptors">
+      			<interceptor-ref name = "defaultStack"></interceptor-ref>
+      			<interceptor-ref name = "LoginInterceptors"/>
+      		</interceptor-stack>
+      	</interceptors>
       	
+      	<default-interceptor-ref name = "myInterceptors"></default-interceptor-ref>      
+	
       	<global-results>
       		<result name="login" type="redirect">/login.jsp</result>
-      		<result name="success" type="redirect">${prePage}</result>
-      		
+      		   		
       	</global-results>
       </package> 
     
      <package name="plant" namespace="/plant" extends="default">	 
 	        <action name="plant_*" class="plantAction" method="{1}">
+	        	<result name="show_queryview">/search.jsp</result>
 	        	<result name="show_view">/main.jsp</result>
 	        	<result name="show_view1">/query.jsp</result>
 	        	<result name="show_view2">/edit.jsp</result>
@@ -34,7 +46,19 @@
 	        </action>  
 	 </package>
 	
-     
+      <package name="admin" namespace="/admin" extends="default" >
+	        <action name="admin_*" class="userAction" method="{1}"> 
+	            <result name="show_view" type="chain">
+	              <param name="actionName">plant_showPlant</param> 
+                  <param name="namespace">/plant</param>
+                  <param name="param1">${admin.guanli}</param>       
+                </result>
+      			<result name="input">/reg.jsp</result>
+                <result name="logininput">/loginfail.jsp</result>
+              	<result name="success">/loginsuc.jsp</result>
+                 
+	        </action>  
+	 </package> 
 
 </struts>
 

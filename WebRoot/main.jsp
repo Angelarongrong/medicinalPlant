@@ -18,27 +18,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" type="text/css" href="css/index1.css">
-	<link rel="shortcut icon" href="<%=basePath%>images/logo.png">
-	
-	<link rel="stylesheet" href="css/buttons.css">
- 	 
-		<link type="text/css" rel="stylesheet" href="less/reset.css">
-		<link type="text/css" rel="stylesheet" href="less/slide.css">
-		<link type="text/css" rel="stylesheet" href="less/index.css">
-		
+	<link rel="shortcut icon" href="<%=basePath%>images/logo.png">		
 	<link rel="stylesheet" href="<%=basePath%>css/bootstrap.css">
 	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css"media="screen and (max-device-width:400px)"href="tinyScreen.css" />
 	
  	 <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		
-		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>	
-			
-	
-	
-	
+		<script type="text/javascript" src="js/jquery.min.js"></script>	
 
   </head>
   
@@ -48,11 +38,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<div class="row">
   		<!-- 登陆注册 -->
   			<div class="header-login ">
-	  		   <div class="top-table">  		   		
-	  		   		<ul>	  		
-	  		   			<li><a class="top-table-font" href="#">注册</a></li>
-	  		   			<li><a class="top-table-font" href="#">登录</a></li>  		   			
+	  		   <div class="top-table">
+	  		     <c:choose>
+		       <c:when test="${admin.guanli ==null}"> <ul>	  		
+	  		   			<li><a class="top-table-font" href="reg.jsp">注册</a></li>
+	  		   			<li><a class="top-table-font" href="login.jsp">登录</a></li>  		   			
 	  		   		</ul>
+	  		   	</c:when>
+		       <c:otherwise>
+		       <ul>
+		     
+		      <li> <a class="top-table-font" href="logout.jsp">退出</a>  </li>
+		       <li> <a class="top-table-font"><c:out value="${admin.guanli}"></c:out>, 欢迎您!</a>	</li>
+		      </ul>
+		       </c:otherwise>
+		     </c:choose>		   		
+	  		   		
+	  		
 	  		   </div> 
   		   </div> 
   		   <!-- 登陆注册结束 --> 
@@ -66,16 +68,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			
   		   <!-- 1.结束 -->     
   		   <!-- 搜索栏开始-->   
+	 	   <s:form action="plant/plant_queryPlant" method="post">
   		    <div class="search ">
 		  		<div class="container1-1">
 		  			<div class="input-group " style="margin-top:0px positon:relative">  
-		      			 <input type="text" class=" search clearable" placeholder="搜索植物，例如：耳草" / >  
+		      			 <input type="text" class=" search clearable" name="keywords" placeholder="搜索植物，例如：耳草" / >  
 		       				<span class="input-group-btn">  
-		           			<button class="btn btn-info btn-search"><i class="fa fa-search"></i></button>             
+		           			<button class="btn btn-info btn-search" type="submit"><i class="fa fa-search"></i></button>             
 		        			</span>  
 		 			</div>  
 		  		</div>
   			</div>
+  			</s:form>
   			<!-- 搜索栏结束--> 
   			</div>
   			<!-- 导航开始--> 
@@ -97,7 +101,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
    <!-- 首页图文 -->
    
-   <div class="contain5">
+   <div class="main-contain">
+   <div class="contain5" >
+   	
    		<div class="show-title">
    				<h3>植物展示</h3>
    				<a href="plant/plant_showPlant1" class="more">查看更多</a>
@@ -106,19 +112,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			<ul class="show-list">
    				<s:iterator value="plantslist" status="status" >
    					<li class="show-item">
-   						<a href="#" class="show-pic">
-   						<img src = "<%=basePath %><s:property value='filepath'/>" style="width:100%;height:225px">
-						</a>
+   						<s:a href="plant/plant_showDetail?plant.plid=%{plid}">
+   						<img src = "<%=basePath %><s:property value='filepath'/>" style="width:323px;height:225px">
+						</s:a>
    						<div class="show-info">
-	   						<a href="#" class="show-name" style="font-style:italic;"><s:property value ="scname"/></a>
+	   						<s:a href="plant/plant_showDetail?plant.plid=%{plid}"><a class="show-name" style="font-style:italic;"><s:property value ="scname"/></a>
 	   						<p class="show-name-p"><s:property value ="loname"/></p>
+	   						</s:a>
    						</div>
    					</li>
    				</s:iterator>
    			</ul>
    		</s:form>
    		</div>
-   		
+   	</div>	
    		<!--  友情链接和脚本 -->
    		<footer class="footer">
    			<div class=" footer-contain">
@@ -126,9 +133,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    					
    						<div class="footer-code">
    								<div class="code">
-   								<img src="images/code.png" alt="二维码" style="width:120px;height:120px">   						
+   								<img src="images/code.png" alt="二维码" style="width:120px;height:120px"> 
+   								<p>扫码关注我们的公众号</p>  						
 		   						</div>
-		   						<p>扫码关注我们的公众号</p>
+		   						
 		   							
 		   				</div>
    					
@@ -153,10 +161,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   						</ul>
 	   					</div>
    				</div>
-   				<div class="footer-copyright">
-   					<p>©2018 URTP·江华药市药用植物数据库开发小组   版权所有</p>
-   				</div>
+ 				
    			</div>
+   			<div class="footer-copyright">
+   				  <div class = "footer-copyright-p">
+   					<p>©2018 URTP·江华药市药用植物数据库开发小组   版权所有</p>
+   				  </div>
+   				</div>
    			</footer>
    		  
   </body>

@@ -4,10 +4,12 @@ html{
 
 body {
 	background-color: #ffffff;
+	height:100%;
+	 margin:0;
 }
 
 .top{
-	height:400px;
+	height:440px;
 	background-color: #27ae60;
 }
 
@@ -16,7 +18,8 @@ body {
 	margin-right:auto;
 	margin-left:auto;
 	width:100%;
-	height:350px;		
+	height:350px;	
+	overflow:hidden;	
 }
 
 /*登陆注册按钮*/
@@ -77,10 +80,11 @@ body {
 	text-align:center;
 	margin-top:10px;
 	font-family: 'YouYuan';
-	font-size:45px;
+	font-size:3.5em;
 	text-decoration:none;
 	color:#ffffff;
 	text-shadow: -4px 4px 0 rgba(0,0,0,.1);
+	
 
 }
 
@@ -88,9 +92,10 @@ body {
 	text-align:center;
 	margin-top:10px;
 	font-family: 'YouYuan';
-	font-size:40px;
+	font-size:3em;
 	text-decoration:none;
 	color:#ffffff;	
+	
 }
 
 .header-title a {
@@ -130,7 +135,7 @@ body {
 .input-group {
 	margin-left:auto;
 	margin-right:auto;
-	width:50%;
+	width:60%;
 	padding:0;
 	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 	background-color:#fff;
@@ -272,6 +277,7 @@ body {
 	width:60%;
 	height:100%;
 	font-style:normal;
+	overflow:hidden;
 	
 }
 
@@ -291,6 +297,7 @@ body {
 	-moz-transition: all 0.3s ease-in-out;
 	-webkit-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
+	overflow:hidden;
 	
 }
 
@@ -309,7 +316,7 @@ body {
 	text-align:center;
 	text-decoration:none;
 	font-family: 'STXingkai';
-	font-size:26px;
+	font-size:1.7em;
 	color:#605f65;
 	font-weight:normal;	
 }
@@ -328,6 +335,8 @@ body {
 	border-left:1px solid #ecf0f1;
 	border-right:1px solid #ecf0f1;
 	border-top:1px solid #ecf0f1;
+	overflow-y:auto; 
+	overflow-x:auto;
 }
 
 .images{
@@ -399,12 +408,12 @@ body {
 
 .punchline1 span:nth-of-type(1){
 	padding-left:4px;
-	font-size:35px;
+	font-size:1.2em;
 	display:block;
 }
 
 .punchline1 span:nth-of-type(2){
-	font-size:45px;
+	font-size:1.3em;
 	margin-top:16px;
 	color:#c32136;
 	display:block;
@@ -412,7 +421,7 @@ body {
 }
 
 .box2{
-	width:32%;
+	width:31%;
 	height:300px;
 	float:left;	
 	background-color:rgba(221, 221, 221, 1) ;
@@ -424,6 +433,8 @@ body {
 	-moz-transition: all 0.3s ease-in-out;
 	-webkit-transition: all 0.3s ease-in-out;
 	transition: background 0.3s ease-in-out;
+	overflow-y:auto; 
+	overflow-x:auto;
 }
 
 .box2:hover{
@@ -441,6 +452,7 @@ body {
 	text-align:left;
 	line-height:1;
 	display:block;
+	
 	/*background-color:rgba(221, 221, 221, 1) ;*/
 	/*border-radius:5px;*/
 }
@@ -454,9 +466,7 @@ body {
 }
 
 .punchbox2 p{
-	 
-	font-size:20px;
-	 
+	font-size:1.3em;
 	display:block;
 	margin-top:15px;
 	font-family:'STXingkai'; 
@@ -469,15 +479,23 @@ body {
 }
 /*江华瑶药介绍*/
 /*植物图片展示开始*/
+.main-contain{
+	margin:0 -15px ;
+	height:930px;	
+	background-color:#fff;
+	padding:70px 0;
+}
+
 .contain5 {	
 	margin-right:auto;
-	margin-left:auto;
-	margin-top:70px;
+	margin-left:auto;	
 	width:60%;
 	height:830px;
 	border:1px solid #ecf0f1;
 	padding:0 20px;
-}
+	overflow-y:auto; 
+	overflow-x:auto;
+	}
 
 .show-title{
 	position:relative;
@@ -538,7 +556,7 @@ body {
 	position:relative;
 	top:0;
 	float:left;
-	width:23%;	
+	width:323px;	
 	margin-right:20px;
 	border:1px solid #dedfe0;
 	background-color:#fefefc;
@@ -593,10 +611,16 @@ body {
 /*植物图片展示结束*/
 
 /*编辑页面开始*/
+.edit-main-contain{
+	height:900px;
+	width:100%;
+	background-color:#fff;	
+	padding:0;
+}
+
 .add-contain{
 	margin-left:auto;
 	margin-right:auto;
-	padding-top :70px ;
 	width:61.5%;
 }
 
@@ -723,7 +747,6 @@ main table td{
 
 /*脚本开始*/
 .footer{
-	margin-top:80px;
 	color:#fff;
 	
 }
@@ -731,8 +754,10 @@ main table td{
 .footer-contain{
 	margin:0;
 	width:100%;
-	height:300px;
+	height:230px;
+	
 	background-color: #27ae60;
+	
 }
 
 .footer-link{
@@ -740,20 +765,23 @@ main table td{
 	padding:50px 0;
 	margin-left:auto;
 	margin-right:auto;
-	height:250px;	
+	height:auto;	
+	
 }
 
 .footer-code{
-	width:40%;
+	width:50%;
 	height:100%;
 	display:block;
 	float:left;
-	padding-left:160px;
+	
 	border-right:1px solid #fff;
+	
 }
 
 .code{
-	margin-left:10px;
+	padding-right:20%;
+	float:right;
 }
 
 .footer-code p{
@@ -762,11 +790,14 @@ main table td{
 }
 
 .footer-linkweb{
-	width:60%;
-	height:100%;
+	width:50%;
+	height:150px;
 	display:block;
 	float:right;
 	padding-left:100px;
+	overflow-y:auto; 
+	overflow-x:auto;
+	
 }
 
 .footer-list {	
@@ -786,14 +817,31 @@ main table td{
 }
 
 .footer-copyright{
+	background-color: #27ae60;
 	width:100%;
-	height:50px;
+	height:auto;
+	margin-left:auto;
+	margin-right:auto;
+	
+	
 }
 
-.footer-copyright p{
-	text-align:center;
-	line-height:50px;
+.footer-copyright-p{
+	width:40%;
+	height:30px;
+	margin-left:auto;
+	margin-right:auto;
+	
 }
+
+
+p{
+	text-align:center;
+	line-height:30px;
+	
+}
+
+
 /*脚本结束*/
 
 
@@ -836,14 +884,18 @@ main table td{
 	margin-left:auto;
 	margin-right:auto;
 	height:1000px;
+	overflow-x:auto;
+	max-height:750px;
 }
 
+
 .edit-menu{
-	width:50%;
+	width:60%;
 	margin-left:auto;
 	margin-right:auto;
+	margin-top: 30px;
 	padding: 0;
-	height:70px;
+	height:40px;
 	margin-bottom:20px;
 }
 
@@ -853,36 +905,81 @@ main table td{
 }
 
 .normal{
-	width:220px;
+	width:25%;
 	height:40px;
 	background-color:#dff0d8;
 	float:left;
-	margin:0 20px;
+	margin-right:20px;
 	border:1px solid  #27ae60;
 	line-height:40px;
 	font-weight:normal;
-	font-size:20px;
+	font-size:1.7em;
 	font-family:'STXingkai';
 	text-align:center;
+	text-decoration:none;
+	overflow:hidden;
 }
 
 .active1{
 	background-color: #27ae60;
-	width:220px;
+	width:25%;
 	height:40px;
 	color:#eee;
 	float:left;
-	margin:0 20px;
+	margin-right:20px;
 	border:1px solid  #27ae60;
 	line-height:40px;
 	font-weight:normal;
-	font-size:20px;
+	font-size:1.7em;
 	font-family:'STXingkai';
 	text-align:center;
+	text-decoration:none;
+		overflow:hidden;
 }
 
 .active1:hover{
 	color:#fff;
+	text-decoration:none;
+	
+}
+
+.add{
+	font-weight:normal;
+}
+
+.add:hover{
+	text-decoration:none;
+	color:#473231;
+	font-weight:normal;
+}
+
+.edit{
+	color:#fff;
+	font-weight:normal;
+}
+
+.edit-button{
+	color:#473231;
+	font-weight:normal;
+}
+.edit-button:hover{
+	color:#473231;
+	font-weight:normal;
+}
+
+.edit:hover{
+	text-decoration:none;
+	color:#fff;
+	font-weight:normal;
+}
+
+.delete{
+	font-weight:normal;
+}
+
+.delete:hover{
+	text-decoration:none;
+	color:#473231;
 }
 
 /*联系我们页面*/
@@ -890,5 +987,141 @@ main table td{
 	width:60%;
 	margin-left:auto;
 	margin-right:auto;
+	
 	height:800px;
+}
+
+.login-contain-layer1{
+	width:100%;
+	height:50%;
+	margin-top:150px;	
+	background-color:#27ae60
+}
+
+.login-contain-layer2{
+	width:20%;
+	height:300px;
+	margin-left:auto;
+	margin-right:auto;
+	
+	background-color:#fff;
+}
+
+.detail-contain{
+	width:100%;
+	background-color:#fff;
+	height:1000px;
+	padding:30px 0;
+}
+
+.detail-layer1{
+	width:60%;
+	margin-left:auto;
+	margin-right:auto;
+	height:940px;
+	border: 1px solid #ecf0f1;
+}
+
+.left-layer{
+	width:35%;
+	float:left;
+	height:100%;
+	border-right: 1px solid #ecf0f1;	
+	
+}
+
+.detail-images{
+	width:100%;
+	float:left;
+	padding:15px;
+	height:40%;
+	border-bottom: 1px solid #ecf0f1;
+}
+
+.shuxing{
+	width:100%;
+	height:60%;
+}
+
+.shuxing-layer1{
+	float:left;
+	width:25%;
+	height:100%;
+	border-right: 1px solid #ecf0f1;
+}
+
+.shuxing-layer2{
+	border-bottom: 1px solid #ecf0f1;
+	height:20%;
+	width:100%;
+}
+
+.xinxi{
+	float:right;
+	width:75%;
+	height:100%;
+}
+
+.detail-xinxi{
+	border-bottom: 1px solid #ecf0f1;
+	height:20%;
+	width:100%;
+	padding-top:15px;
+	text-align:center;
+	overflow-y:auto; 
+	overflow-x:auto;
+}
+
+.shuxing-layer3{
+	text-align:center;
+	width:100%;
+	height:30%;
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:50px; 
+}
+
+.right-layer{
+	width:65%;
+	height:100%;
+	float:right;
+}
+
+.right-layer2{
+	height:100%;
+	width:15%;
+	border-right: 1px solid #ecf0f1;
+	float:left;
+}
+
+.right-layer3{
+	height:20%;
+	width:100%;
+	border-bottom: 1px solid #ecf0f1;
+	
+}
+
+.right-layer4{
+	text-align:center;
+	width:100%;
+	height:30%;
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:80px; 
+}
+
+.right-layer5{
+	height:100%;
+	width:85%;
+	float:right;
+}
+
+.right-layer6{
+	text-align:center;
+	padding-top:70px;
+	height:20%;
+	width:100%;
+	border-bottom: 1px solid #ecf0f1;
+	overflow-y:auto; 
+	overflow-x:auto; 
 }

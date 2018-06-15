@@ -11,6 +11,10 @@
 		<mapping resource="com/plant/model/Plants.hbm.xml" />
 		<mapping class="com.plant.model.Plants" />
 		<mapping class="com.music.model.Music_customer" />
+		<mapping class="com.plant.Guanli" />
+		<mapping class="com.plant.model.Guanli" />
+		<mapping class="com.music.model.Songs" />
+		<mapping class="com.music.model.Music_order" />
 
 	</session-factory>
 

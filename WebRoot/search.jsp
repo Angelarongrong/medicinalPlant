@@ -1,3 +1,4 @@
+
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -6,23 +7,25 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
+<!DOCTYPE html>
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>数据编辑页</title>
-   <meta http-equiv="pragma" content="no-cache">
+    <title>江华县药市药用植物资源数据库</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" type="text/css" href="css/index1.css">
-	<link rel="shortcut icon" href="<%=basePath%>images/logo.png">
-		
+	<link rel="shortcut icon" href="<%=basePath%>images/logo.png">		
 	<link rel="stylesheet" href="<%=basePath%>css/bootstrap.css">
 	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 	
  	 <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		
@@ -65,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			<div class="header-title">
   				<h2>江华县药市</h2>
   				<h1>药用植物资源数据库</h1>
-  				
+  			
   			</div>
   			
   		   <!-- 1.结束 -->     
@@ -90,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			   		<ul>  					
 			  			<li><a href="plant/plant_showPlant">主页</a></li>
 			  			<li><a href="plant/plant_showPlant1">植物检索</a></li>
-			  			<li class="active"><a href="plant/plant_showPlant2">数据编辑</a></li>
+			  			<li><a href="plant/plant_showPlant2">数据编辑</a></li>
 			  			<li><a href="otherinfo.jsp">相关信息</a></li>
 			  			<li><a href="aboutus.jsp">联系我们</a></li>			
 			  		</ul>
@@ -100,94 +103,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	</div>
   	</div>
   	<!-- 页面顶部结束 -->
-  	
-  	<div class="edit-main-contain">
-  	<div class="edit-menu">
-  			<ul>
-  			<li class="normal"><a href="add.jsp" class="add">添加植物信息</a></li>
-		  	<li class="active1"><a href="plant/plant_showPlant2" class="edit">修改已有数据</a></li>
-		  	</ul>
-  		</div>
-    <div class="edit-contain" >
-  		
-  		
-	                 <s:form action="plant/plant_showPlant1" method="post">
+   
+   <!-- 首页图文 -->
+   
+   <div class="main-contain">
+   <div class="contain5" >
 	                 <div class="panel-body panel-body-table" >
-	                      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-	                         <thead>
+	               
+	                  <s:if test="plantslist.size() > 0"> 
+	                   <table class="table table-striped table-bordered table-hover" id="dataTables-example">            
+	                    	 <thead>
 	                           <tr>
-	                              	  <th>序号</th> 
+	                              	  <th>序号</th>  
 							          <th>学名</th>
 							          <th>俗名</th>
-							          <th>编号</th> 
-							          <th>操作</th> 
-							           
-							         
+							          <th>科</th> 
+							          <th>属</th> 							  
+							          <th>图片</th> 
 							          
 	                              </tr>
 	                          </thead>
-	                          <tbody>
-	                              <s:iterator value="plantslist" var="plant" status="status">
+	                          
+	                           
+	                          <tbody>    
+	                                  <s:iterator value="plantslist" var="plant" status="status">      
 	                                  <tr>
 	                                      <td><s:property value="#status.index+1"></s:property></td>
-	                                      <td>
+	                                     <td>
 	                                      <s:a href="plant/plant_showDetail?plant.plid=%{plid}"><s:property value="#plant.scchname"></s:property> </s:a>              
 	                                      <br/><a style="font-style:italic;"><s:property value="#plant.scname"></s:property></a>
 	                                      </td>
 	                                      <td><s:property value="#plant.chloname"></s:property>
 	                                      <br/><s:property value="#plant.loname"></s:property></td>
-	                                      <td><s:property value="#plant.vnumber"></s:property></td>
-	                                      <td><a href="plant/plant_showEdit?plant.plid=<s:property value='plid'/>" class="edit-button">编辑   </a>
-	                                      	  <a href="plant/plant_deletePlant?plant.plid=<s:property value='plid'/>" class="delete">  删除</a>
-	                                      </td>
-	                                      
-	                                      
-	                                  </tr>
-	                              </s:iterator>
+	                                      <td><s:property value="#plant.chfaname"></s:property>
+	                                       <br/><s:property value="#plant.faname"></s:property></td>
+	                                      <td><s:property value="#plant.chgenara"></s:property>
+	                                       <br/><s:property value="#plant.genera"></s:property></td>     
+	                                       <td><img src = "<%=basePath %><s:property value='filepath'/>" style="width:100px;height:100px"></td>          
+	                                  </tr>    
+	                                   </s:iterator>                       
 	                          </tbody>
+	                       
+	                             
 	                        </table>
+	                        </s:if>                  
+	                        <s:else>
+	                           <p>搜索结果为空</p>
+	                        </s:else>
+	                       
 	                   </div>
-	                   </s:form>
-	       </div>
-	
-	<script src="<%=basePath%>js/jquery.min.js"></script>
-    <script src="<%=basePath%>js/bootstrap.min.js"></script>
-    <script src="<%=basePath%>js/jquery.dataTables.js"></script>
-    <script src="<%=basePath%>js/dataTables.bootstrap.js"></script>
-    <script>
-       $(document).ready(function () {
-           $('#dataTables-example').dataTable({
-			   "language": {
-                 "lengthMenu": "每页 _MENU_ 条记录",
-                 "zeroRecords": "没有找到记录",
-                 "info": "第 _PAGE_ 页 ( 共 _PAGES_ 页 )",
-                 "infoEmpty": "无记录",
-                 "infoFiltered": "(从 _MAX_ 条记录过滤)",
-				 "sInfoPostFix": "",
-				 "sSearch": "搜 索 : ",
-				 "sUrl": "",
-				 "sEmptyTable": "表中数据为空",
-				 "sLoadingRecords": "载入中...",
-				 "sInfoThousands": ",",
-				 "oPaginate": {
-					"sFirst": "首页",
-					"sPrevious": "上页",
-					"sNext": "下页",
-					"sLast": "末页"
-				 },
-				 "oAria": {
-				 "sSortAscending": ": 以升序排列此列",
-				 "sSortDescending": ": 以降序排列此列"
-			     },
-				 
-             }
-		   });
-       });
-    </script>
-  
-  	</div>
-  	
-  	 <!--  友情链接和脚本 -->
+	                  
+   		</div>
+   	</div>	
+   		<!--  友情链接和脚本 -->
    		<footer class="footer">
    			<div class=" footer-contain">
    				<div class="footer-link">
@@ -230,5 +198,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    				  </div>
    				</div>
    			</footer>
+   		  
   </body>
 </html>

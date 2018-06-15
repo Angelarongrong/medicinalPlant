@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" type="text/css" href="css/index1.css">
 	<link rel="shortcut icon" href="<%=basePath%>images/logo.png">
 	
@@ -46,11 +46,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<div class="row">
   		<!-- 登陆注册 -->
   			<div class="header-login ">
-	  		   <div class="top-table">  		   		
-	  		   		<ul>	  		
-	  		   			<li><a class="top-table-font" href="#">注册</a></li>
-	  		   			<li><a class="top-table-font" href="#">登录</a></li>  		   			
+	  		   <div class="top-table">
+	  		     <c:choose>
+		       <c:when test="${admin.guanli ==null}"> <ul>	  		
+	  		   			<li><a class="top-table-font" href="reg.jsp">注册</a></li>
+	  		   			<li><a class="top-table-font" href="login.jsp">登录</a></li>  		   			
 	  		   		</ul>
+	  		   	</c:when>
+		       <c:otherwise>
+		       <ul>
+		     
+		      <li> <a class="top-table-font" href="logout.jsp">退出</a>  </li>
+		       <li> <a class="top-table-font"><c:out value="${admin.guanli}"></c:out>, 欢迎您!</a>	</li>
+		      </ul>
+		       </c:otherwise>
+		     </c:choose>		   		
+	  		   		
+	  		
 	  		   </div> 
   		   </div> 
   		   <!-- 登陆注册结束 --> 
@@ -59,21 +71,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			<div class="header-title">
   				<h2>江华县药市</h2>
   				<h1>药用植物资源数据库</h1>
-  				<a>共收录了320条药用植物信息</a>
   			</div>
   			
   		   <!-- 1.结束 -->     
-  		   <!-- 搜索栏开始-->   
+  		    <!-- 搜索栏开始-->   
+	 	   <s:form action="plant/plant_queryPlant" method="post">
   		    <div class="search ">
 		  		<div class="container1-1">
 		  			<div class="input-group " style="margin-top:0px positon:relative">  
-		      			 <input type="text" class=" search clearable" placeholder="搜索植物，例如：耳草" / >  
+		      			 <input type="text" class=" search clearable" name="keywords" placeholder="搜索植物，例如：耳草" / >  
 		       				<span class="input-group-btn">  
-		           			<button class="btn btn-info btn-search"><i class="fa fa-search"></i></button>             
+		           			<button class="btn btn-info btn-search" type="submit"><i class="fa fa-search"></i></button>             
 		        			</span>  
 		 			</div>  
 		  		</div>
   			</div>
+  			</s:form>
   			<!-- 搜索栏结束--> 
   			</div>
   			<!-- 导航开始--> 
@@ -82,9 +95,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			   		<ul>  					
 			  			<li><a href="plant/plant_showPlant">主页</a></li>
 			  			<li><a href="plant/plant_showPlant1">植物检索</a></li>
-			  			<li class="active"><a href="plant/plant_showPlant2">数据编辑</a></li>
-			  			<li><a href="#">相关信息</a></li>
-			  			<li><a href="#">联系我们</a></li>			
+			  			<li  class="active"><a href="plant/plant_showPlant2">数据编辑</a></li>
+			  			<li><a href="otherinfo.jsp">相关信息</a></li>
+			  			<li><a href="aboutus.jsp">联系我们</a></li>			
 			  		</ul>
 	  			</div>	
   		   </div>

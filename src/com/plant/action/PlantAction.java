@@ -27,7 +27,7 @@ public class PlantAction extends ActionSupport{
 	 private String plantPhotoFileName;
 	 private String plantPhotoContentType;
 	 private List<Plants> plantslist;
-	 private String keywords;
+	 private String keyWords;
 	
 	 public PlantDao getPlantDao() {
 			return plantDao;
@@ -77,12 +77,12 @@ public class PlantAction extends ActionSupport{
 			this.plantslist = plantslist;
 		}
 		
-		public String getKeywords() {
-			return keywords;
+		public String getKeyWords() {
+			return keyWords;
 		}
 		
-		public void setKeywords(String keywords) {
-			this.keywords = keywords;
+		public void setKeywords(String keyWords) {
+			this.keyWords = keyWords;
 		}
 	
 	
@@ -192,8 +192,8 @@ public class PlantAction extends ActionSupport{
 	}
 	public String queryPlant() throws Exception{
 		System.out.println("into plantAction.queryPlant");
-		plantslist = plantDao.QueryPlantsInfo(keywords);
-		return "show_view";
+		plantslist = plantDao.QueryPlantsInfo(keyWords);
+		return "show_queryview";
 	}
 	
 	
